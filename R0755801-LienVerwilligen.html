@@ -5,8 +5,183 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulier Opdracht</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
 </head>
 <body>
+    <div class="container">
+        <br>
+        <strong><h1>Registreer</h1></strong>
+        <p>Meld je aan bij Anoroc Services, wij beschermen jouw software tegen malware!</p>
+        <hr>
+        <br>
+        <form name="Formulier" action="" onsubmit="" method="POST">
+            <!-- Rij Naam & Voornaam-->
+            <div class="row">
+                <div class="col">
+                    <label for="Voornaam">Voornaam</label><br>
+                    <input type="text" class="form-control" placeholder="Uw voornaam" name="InputVoornaam">
+                </div>
+                <div class="col">
+                    <label for="Naam">Naam</label><br>
+                    <input type="text" class="form-control" placeholder="Uw naam" name="InputNaam">
+
+                </div>
+            </div>
+            <br>
+            <!-- Rij Gebruikersnaam & E-mail -->
+            <div class="row">
+                <div class="col">
+                    <label for="inputGebruiksnaam">Gebruiksnaam</label><br>
+                    <div class="input-group">
+                        <div class="input-group-gebruiksnaam">
+                            <div class="input-group-text">@</div>
+                        </div>
+                        <input type="text" class="form-control" name="InputGebruiksnaam" placeholder="Gebruiksnaam">
+                    </div>
+                </div>
+                <div class="col">
+                    <label for="E-mailadres">E-mailadres</label><br>
+                    <input type="email" class="form-control" placeholder="mail@example.be" name="InputE-mailadres">
+                </div>
+            </div>
+            <br>
+            <!-- Rij Wachtwoord-->
+            <div class="row">
+                <div class="col">
+                    <label for="Wachtwoord" class="form-check-label">Wachtwoord</label><br>
+                    <input type="password" class="form-control" placeholder="" name="InputWachtwoord">
+                    <p>Je wachtwoord moet minstens 8 tekens lang zijn.</p>
+                </div>
+                <div class="col">
+                    <label for="Herhaal_wachtwoord">Herhaal wachtwoord</label><br>
+                    <input type="password" class="form-control" placeholder="" name="InputHerhaal_wachtwoord">
+                </div>
+            </div>
+            <!-- Rij Adres-->
+            <div class="row">
+                <div class="col">
+                    <label for="Adres" class="form-check-label">Adres</label><br>
+                    <input type="text" class="form-control" placeholder="Uw adres en huisnummer" name="InputAdres">
+                </div>
+            </div>
+            <br>
+            <!-- Rij Land, Provincie & Postcode-->
+            <div class="row">
+                <div class="col">
+                    <label for="Land" class="form-check-label">Land</label><br>
+                    <select class="form-control" name="InputLand">
+                        <option value="">Kies een land</option>
+                        <option value= "België">België</option>
+                        <option value= "Spanje">Spanje</option>
+                        <option value= "Indonesië">Indonesië</option>
+                        <option value= "Griekenland">Griekenland</option>
+                    </select>
+                </div>
+                <div class="col">
+                    <label for="Provincie" class="form-check-label">Provincie</label><br>
+                    <select class="form-control" name="InputProvincie">
+                        <option value="">Kies een provincie</option>
+                            <optgroup label="Belgische provincies">
+                                <option value= "België1">Antwerpen</option>
+                                <option value= "België2">Henegouwen</option>
+                                <option value= "België3">Limburg</option>
+                                <option value= "België4">Luik</option>
+                                <option value= "België5">Luxemburg</option>
+                                <option value= "België6">Namen</option>
+                                <option value= "België7">oost-Vlaanderen</option>
+                                <option value= "België8">Vlaams-Brabant</option>
+                                <option value= "België9">Waals-Brabant</option>
+                                <option value= "België10">West-Vlaanderen</option>
+                            </optgroup>
+                            <optgroup label="Spaanse provincies">
+                                <option value= "Spanje1">Barcelona</option>
+                                <option value= "Spanje2">Granada</option>
+                                <option value= "Spanje3">Léon</option>
+                                <option value= "Spanje4">Madrid</option>
+                                <option value= "Spanje5">Malaga</option>
+                                <option value= "Spanje6">Las Palmas</option>
+                                <option value= "Spanje7">Pontevedra</option>
+                                <option value= "Spanje8">Sevilla</option>
+                                <option value= "Spanje9">Toledo</option>
+                                <option value= "Spanje10">Valencia</option>
+                            </optgroup>
+                            <optgroup label="Provincies van Indonesië">
+                                <option value= "Indonesië1">Bali</option>
+                                <option value= "Indonesië2">Jakarta</option>
+                                <option value= "Indonesië3">Molukken</option>
+                                <option value= "Indonesië4">Papoea</option>
+                                <option value= "Indonesië5">Gorontalo</option>
+                                <option value= "Indonesië6">Sulawesi Selatan</option>
+                                <option value= "Indonesië7">Bengkulu</option>
+                                <option value= "Indonesië8">Jambi</option>
+                                <option value= "Indonesië9">Lampung</option>
+                                <option value= "Indonesië10">Riau</option>
+                            </optgroup>
+                            <optgroup label="Griekse provincies">
+                                <option value= "Griekenland1">Athena</option>
+                                <option value= "Griekenland2">Attica</option>
+                                <option value= "Griekenland3">Mesolongi</option>
+                                <option value= "Griekenland4">Nafplio</option>
+                                <option value= "Griekenland5">Megalopolis</option>
+                                <option value= "Griekenland6">Tripoli</option>
+                                <option value= "Griekenland7">Piraeus</option>
+                                <option value= "Griekenland8">Salamis</option>
+                                <option value= "Griekenland9">Thebe</option>
+                                <option value= "Griekenland10">Corfu</option>
+                            </optgroup>
+                    </select>
+                </div>
+                <div class="col">
+                    <label for="Postcode">Postcode</label><br>
+                    <input type="number" class="form-control" placeholder="" name="InputPostcode">
+                </div>
+            </div>
+            <br>
+            <hr>
+            <!-- Rij Algemene Voorwaarden & Betaling -->
+            <div class="row">
+                <div class="col">
+                    <label for="HouMeOpDeHoogte"><h2>Hou me op de hoogte</h2><br>
+                    <div>
+                        <input type="checkbox" class="form-check-input" name="InputNieuwsbrief">
+                        <label for="Nieuwsbrief" class="form-check-label">Inschrijven voor onze nieuwsbrief</label>
+                </div>
+                <div>
+                    <input type="checkbox" class="form-check-input" name="InputAlgemeneVoorwaarden">
+                    <label for="AlgemeneVoorwaarden" class="form-check-label">Ik ga akkoord met de Algemene voorwaarden</label>
+                </div>
+            </div>
+            <div class="col">
+                <label for="Betaling"><h2>Betaling</h2></label><br>
+                <div>
+                    <input type="radio" class="form-check-input" name="Banking" value="App">
+                    <label for="App" class="form-check-label">Banking app</label>
+                </div>
+                <div>
+                    <input type="radio" class="form-check-input" name="Banking" value="Overschrijving">
+                    <label for="Overschrijving" class="form-check-label">Overschrijving</label>
+                </div>
+                <div>
+                    <input type="radio" class="form-check-input" name="Banking" value="Visa">
+                    <label for="Visa" class="form-check-label">Visa card</label>
+                </div>
+                <div>
+                    <input type="radio" class="form-check-input" name="Banking" value="PayPal">
+                    <label for="PayPal" class="form-check-label">PayPal</label>
+                </div>
+            </div>
+    </div>
+    <br><br>
+    <!-- Submitknop -->
+    <div class="row">
+        <input type="submit" class="btn btn-primary" value="Wave your magic wand" style="width: 100%;" onclick="validateForm()"></input>
+    </div>
+    </form>
+    </div>
+    </div>
+</page>
     
 </body>
 </html>
+
+   
