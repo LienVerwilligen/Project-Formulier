@@ -8,13 +8,154 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
 </head>
 <body>
+   
+    <style>
+        body {
+            background: rgb(204, 204, 204);
+        }
+        
+        page[size="A4"] {
+            background: white;
+            width: 21cm;
+            height: 29.7cm;
+            display: block;
+            margin: 0 auto;
+            margin-bottom: 0.5cm;
+            box-shadow: 0 0 0.5cm rgba(0, 0, 0, 0.5);
+        }
+        
+        @media print {
+            body,
+            page[size="A4"] {
+                margin: 0;
+                box-shadow: 0;
+            }
+        }
+    </style>
+    <script>
+        //https://www.w3schools.com/js/js_validation.asp
+        var fout = "";
+
+        function validateForm() {
+         var varVoornaam = document.forms["Formulier"]["InputVoornaam"].value;
+         var varNaam = document.forms["Formulier"]["InputNaam"].value;
+         var varGebruikersnaam = document.forms["Formulier"]["InputGebruikersnaam"].value;
+         var varEmailadres = document.forms["Formulier"]["InputEmailadres"].value;
+         var varAdres = document.forms["Formulier"]["InputAdres"].value;
+         var varLand = document.forms["Formulier"]["InputLand"].value;
+         var varProvincie = document.forms["Formulier"]["InputProvincie"].value;
+         var varPostcode = document.forms["Formulier"]["InputPostcode"].value;
+
+         showDiv();
+         checkFields();
+         checkValidations();
+         if (fout != "") {
+            showErrors();
+         } else {
+            showSuccess();
+            showBetalingswijze();
+            }
+
+         function checkFields() {
+         checkEmptyField(varVoornaam, "Het veld voornaam is vereist!");
+         checkEmptyField(varNaam, "Het veld naam is vereist!");
+         checkEmptyField(varGebruikersnaam, "Het veld gebruikersnaam is vereist!");
+         checkEmptyField(varEmailadres, "Het veld e-mailadres is vereist!");
+         checkEmptyField(varAdres, "Adres is vereist!");
+         checkEmptyField(varLand, "Land is vereist!");
+         checkEmptyField(varProvincie, "Provincie is vereist!");
+         checkEmptyField(varPostcode, "Postcode is vereist!");
+         }
+
+         function checkValidations() {
+         validationEmail(varEmailadres, "E-mailadres is niet van het juiste type.");
+         validationPostcode(varPostcode, "Postcode moet tussen de 1000 en 9999 liggen.");
+         validationGebruikersnaam(varGebruikersnaam, "Je gebruikersnaam moet minstens 1 karakter lang zijn, en mag niet beginnen met een punt of koppelteken.")
+         }
+
+         function showDiv() {
+         const el = document.createElement('div');
+         el.setAttribute('class', 'col-md-4 container-fluid');
+         el.setAttribute('id', 'volledigGevalideerd')
+         const show = document.querySelector('#formulier-div');
+         show.appendChild(el);
+         }
+
+         function showSuccess() {
+         success = "";
+         success = '<div class="alert alert-success">';
+         success += '<h4>Goed gedaan!<br></h4>';
+         success += 'Aww yeah, je bent succesvol geregistreerd!';
+         success += '</div>';
+         document.querySelector('#volledigGevalideerd').innerHTML = success;
+         }
+
+         function showBetalingswijze() {
+         success = "";
+         success = '<div class="alert alert-info">';
+         success += '<h4>Betalingswijze<br></h4>';
+         success += 'Je betalingswijze is';
+         success += '</div>';
+         document.querySelector('#volledigGevalideerd').innerHTML = success;
+         }
+
+         function showErrors() {
+         Errors = "";
+         Errors = '<div class="alert alert-danger">';
+         Errors += "<h4>Yikes errors.. <br></h4>"
+         Errors += fout;
+         Errors += '</div>'
+         fout = "";
+         document.querySelector('#volledigGevalideerd').innerHTML = Errors;
+         }
+
+         function checkEmptyField(veld, melding) {
+         if (veld == "") {
+            fout += melding + "<br>";
+          } else {
+            fout = "";
+          }
+         }
+    //https://regexr.com/
+    function validationEmail(veld, melding) {
+        var emailformaat = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,}$/;
+        if (veld.match(emailformaat)) {
+            return true;
+        } else {
+            fout += melding + "<br>";
+            return false;
+        }
+    }
+
+    function validationGebruikersnaam(veld, melding) {
+        var gebruikersnaamformaat = /^(?![-.])(\w[-.\w]*)$/;
+        if(vled.match(gebruikersnaamformaat)){
+            return true;
+        } else {
+            fout += melding + "<br>";
+            return false
+        }
+    }
+
+    function validationPostcode(veld, melding) {
+        var postcodeformaat = /^[1-9]{1}[0-9]{3}$/;
+        if (veld.match(postcodeformaat)) {
+            return true;
+        } else {
+            fout += melding + "<br>";
+            return false;
+        }
+    }
+}
+    </script>
+    <page size="A4">
     <div class="container">
         <br>
         <strong><h1>Registreer</h1></strong>
         <p>Meld je aan bij Anoroc Services, wij beschermen jouw software tegen malware!</p>
         <hr>
         <br>
-        <form name="Formulier" action="" onsubmit="" method="POST">
+        <form name="Formulier">
             <!-- Rij Naam & Voornaam-->
             <div class="row">
                 <div class="col">
@@ -31,17 +172,17 @@
             <!-- Rij Gebruikersnaam & E-mail -->
             <div class="row">
                 <div class="col">
-                    <label for="inputGebruiksnaam">Gebruiksnaam</label><br>
+                    <label for="inputGebruikersnaam">Gebruikersnaam</label><br>
                     <div class="input-group">
                         <div class="input-group-gebruiksnaam">
                             <div class="input-group-text">@</div>
                         </div>
-                        <input type="text" class="form-control" name="InputGebruiksnaam" placeholder="Gebruiksnaam">
+                        <input type="text" class="form-control" name="InputGebruikersnaam" placeholder="Gebruikersnaam">
                     </div>
                 </div>
                 <div class="col">
                     <label for="E-mailadres">E-mailadres</label><br>
-                    <input type="email" class="form-control" placeholder="mail@example.be" name="InputE-mailadres">
+                    <input type="email" class="form-control" placeholder="mail@example.be" name="InputEmailadres">
                 </div>
             </div>
             <br>
@@ -53,7 +194,7 @@
                     <p>Je wachtwoord moet minstens 8 tekens lang zijn.</p>
                 </div>
                 <div class="col">
-                    <label for="Herhaal_wachtwoord">Herhaal wachtwoord</label><br>
+                    <label for="HerhaalWachtwoord">Herhaal wachtwoord</label><br>
                     <input type="password" class="form-control" placeholder="" name="InputHerhaal_wachtwoord">
                 </div>
             </div>
@@ -180,7 +321,6 @@
     </div>
     </div>
 </page>
-    
 </body>
 </html>
 
